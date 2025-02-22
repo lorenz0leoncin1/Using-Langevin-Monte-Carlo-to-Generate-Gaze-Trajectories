@@ -1,5 +1,4 @@
-# Using Langevin Monte Carlo to Generate Gaze Trajectories
-# Gaze Trajectory Simulation and Evaluation
+# Using Langevin Monte Carlo to Generate Gaze Trajectories (Simulation and Evaluation)
 
 This project allows simulating gaze trajectories using algorithms like ULA and MALA, and evaluating the performance using trajectory comparison methods such as ScanMatch (SM) and MultiMatch (MM). It can be used to generate and evaluate simulated gaze on an image dataset.
 
@@ -16,7 +15,7 @@ The project includes several modules:
 
 Before running the code, ensure that all required dependencies are installed. You can do this by running:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 The `requirements.txt` file includes necessary packages like `numpy`, `matplotlib`, `torch`, and others.
 
@@ -39,11 +38,11 @@ The `main.py` script performs two main tasks depending on the selected mode:
 
 Choose the algorithm to use: Select the simulation algorithm to use (e.g., ULA or MALA) by modifying the algorithm variable:
 
-algorithm = 'ula'  # or 'mala'
+algorithm = 'ula'  or 'mala'
 
 Set model parameters (optional): If you are using the MALA-Cauchy algorithm, you can set the gamma parameter:
 
-gamma = 0.1  # Used only in MALA-Cauchy
+    gamma = 0.1   Used only in MALA-Cauchy
 
 Type of execution:
 
@@ -52,13 +51,13 @@ Type of execution:
 
 For Type 2, the code in main() is already set up:
 
-evaluation_pipeline_N(n, algorithm, gamma)
+    evaluation_pipeline_N(n, algorithm, gamma)
 
 Run the script: Execute the script to start the simulation and evaluate the results. Make sure that the main.py file is properly configured and that the input images are in the correct path.
 
 To run the script, simply execute:
 
-python main.py
+    python main.py
 
 Algorithm Overview
 
