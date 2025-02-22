@@ -6,7 +6,7 @@ This project allows simulating gaze trajectories using algorithms like ULA and M
 
 The project includes several modules:
 
-- **evaluation.py**: Contains the `evaluation_pipeline_N` function to evaluate the algorithm's performance on a set of images.
+- **evaluation.py**: Contains the `evaluation_pipeline_N` function to evaluate the algorithm's performance on a set of images of the COCOSearch18 dataset, specifically images with observations with more than 2 fixations.
 - **run_algorithms.py**: Contains the `run_algorithm` function to run a simulation algorithm on a single image.
 - **saliency_to_potential.py**: Contains functions to transform saliency maps into potential maps.
 - **zs_clip_seg.py**: A module to generate saliency maps using the CLIPSeg model.
