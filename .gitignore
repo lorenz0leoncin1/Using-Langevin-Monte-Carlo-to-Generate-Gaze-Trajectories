@@ -8,3 +8,6 @@ output/images/
 
 # Ignora il file di output specifico
 risultati_esperimenti.txt
+
+#Remove IVT useless stuff
+IVT_gaze_classify/IVT_gaze_classify/
