@@ -177,8 +177,8 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
     img, img_path, saliency_map, reshaped_saliency, potential_map, mean, cov, ratio = process_image(input_dir, task, name)
 
     # Experiment Parameters ----------------------------------------------
-
     # Parameters for gaze trajectory simulation
+
     init_point = np.random.multivariate_normal(mean, cov, 1).astype(int)[0]  # Initial gaze point
     exp_dur = 2  # Expected duration of the gaze
     gaze_sample_rate = 500  # Sample rate for gaze data
@@ -186,8 +186,9 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
     step_size = 0.01  # Step size for trajectory simulation
     burn_in = 0  # Burn-in period for the algorithm
 
-    
+    # Selection of the algorithm ------------------------------------------
     # Select the algorithm for trajectory simulation
+    
     if algorithm == 'ula':
         # ULA - Unadjusted Langevin Algorithm
         ula = ULA(
