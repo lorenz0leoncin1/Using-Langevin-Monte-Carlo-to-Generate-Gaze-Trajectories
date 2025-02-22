@@ -38,11 +38,11 @@ The `main.py` script performs two main tasks depending on the selected mode:
 
 Choose the algorithm to use: Select the simulation algorithm to use (e.g., ULA or MALA) by modifying the algorithm variable:
 
-algorithm = 'ula'  or 'mala'
+    algorithm = 'ula'  # or 'mala'
 
 Set model parameters (optional): If you are using the MALA-Cauchy algorithm, you can set the gamma parameter:
 
-    gamma = 0.1   Used only in MALA-Cauchy
+    gamma = 0.1   #Used only in MALA-Cauchy
 
 Type of execution:
 
@@ -64,7 +64,7 @@ Algorithm Overview
 The algorithm simulates gaze trajectories on an image using a potential map derived from saliency maps. The simulated trajectories are compared with human scanpaths using metrics like ScanMatch (SM) and MultiMatch (MM) to calculate performance.
 Description of Modules:
 
-    evaluation_pipeline_N(n, algorithm, gamma): Runs the evaluation on N simulated scanpaths for each image in the validation set. It calculates the performance using MM and SM metrics.
-    run_algorithm(input_dir, output_dir, task, name, algorithm, gamma): Runs the chosen algorithm on a single image, simulates the gaze trajectory, and returns the fixations.
-    saliency_to_potential.py: Transforms saliency maps into potential maps to guide Langevin algorithms.
-    zs_clip_seg.py: Generates saliency maps using the CLIPSeg model.
+    evaluation_pipeline_N(n, algorithm, gamma) # Runs the evaluation on N simulated scanpaths for each image in the validation set. It calculates the performance using MM and SM metrics.
+    run_algorithm(input_dir, output_dir, task, name, algorithm, gamma) # Runs the chosen algorithm on a single image, simulates the gaze trajectory, and returns the fixations.
+    saliency_to_potential.py # Transforms saliency maps into potential maps to guide Langevin algorithms.
+    zs_clip_seg.py # Generates saliency maps using the CLIPSeg model.
