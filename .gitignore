@@ -1,0 +1,10 @@
+# Ignora i dataset
+COCOSearch18-fixations-TP/
+COCOSearch18-images-TP/
+
+# Ignora cartelle e file relativi a Python e al processo
+__pycache__/
+output/images/
+
+# Ignora il file di output specifico
+risultati_esperimenti.txt
