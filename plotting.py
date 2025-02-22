@@ -2,7 +2,6 @@ import os
 from matplotlib import patches, pyplot as plt
 import numpy as np
 import torch
-
 from vis import draw_scanpath
 
 def plot_trajectory_on_image(image, trajectory, output_path):
