@@ -17,9 +17,8 @@ The project includes several modules:
 
 ## Requirements
 
-Before running the code, ensure that all required dependencies are installed. You can do this by running:
-
-    pip install -r requirements.txt
+Before running the code, ensure that all required dependencies are installed. You can do this by running: `pip install -r requirements.txt`.
+The project has been developed using `Python 3.9`
 
 The `requirements.txt` file includes necessary packages like `numpy`, `matplotlib`, `torch`, and others.
 
