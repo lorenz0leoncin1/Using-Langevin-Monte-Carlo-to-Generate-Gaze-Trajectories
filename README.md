@@ -2,6 +2,7 @@
 
 This project allows simulating gaze trajectories using algorithms like ULA and MALA, and evaluating the performance using trajectory comparison methods such as ScanMatch (SM) and MultiMatch (MM). It can be used to generate and evaluate simulated gaze on an image dataset.
 
+An example output is shown below on an arbitrary image. The prompt used is: "keyboard".
 ![simulation](simulation.png)
 
 ## Project Structure
