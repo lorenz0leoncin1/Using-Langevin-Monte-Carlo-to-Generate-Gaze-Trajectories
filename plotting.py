@@ -297,13 +297,13 @@ def save_and_plot_everything(img, img_path, output_dir, potential_map, saliency_
     fig = plt.figure(figsize=(15, 10))
     plt.subplot(1, 3, 1)
     plt.imshow(img)
-    #plt.axis("off")
+    plt.axis("off")
     plt.title("Original image")
     
     plt.subplot(1, 3, 2)
     plt.imshow(img)
     draw_scanpath(fix_x, fix_y, fix_d)
-    #plt.axis("off")
+    plt.axis("off")
     plt.title("Simulated Scan")
 
     # Saliency map generata dai dati di scanpath
