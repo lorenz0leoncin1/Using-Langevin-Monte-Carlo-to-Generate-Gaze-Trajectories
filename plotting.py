@@ -2,7 +2,7 @@ import os
 from matplotlib import patches, pyplot as plt
 import numpy as np
 import torch
-from vis import draw_scanpath
+from vis import compute_density_image, draw_scanpath
 
 def plot_trajectory_on_image(image, trajectory, output_path):
     trajectory = np.array(trajectory)  # Converte la traiettoria in array NumPy
@@ -292,38 +292,28 @@ def save_and_plot_everything(img, img_path, output_dir, potential_map, saliency_
 
     plot_gaze_with_steps(img, mala_trajectory, 100, os.path.join(img_output_dir, 'gaze_steps.png'))
     plot_gaze_direction(img, mala_trajectory, os.path.join(img_output_dir, 'gaze_direction.png'))
-    plot_fixations_with_numbers(img, mala_trajectory, 4, 20, 40, os.path.join(img_output_dir, 'fixations.png'))
+    #plot_fixations_with_numbers(img, mala_trajectory, 4, 20, 40, os.path.join(img_output_dir, 'fixations.png'))
     
-    fig = plt.figure(figsize=(16, 16))
-    plt.subplot(1, 4, 1)
+    fig = plt.figure(figsize=(15, 10))
+    plt.subplot(1, 3, 1)
     plt.imshow(img)
     #plt.axis("off")
     plt.title("Original image")
     
-    plt.subplot(1, 4, 2)
+    plt.subplot(1, 3, 2)
     plt.imshow(img)
     draw_scanpath(fix_x, fix_y, fix_d)
     #plt.axis("off")
     plt.title("Simulated Scan")
-    
-    plt.subplot(1, 4, 3)
-    plt.imshow(img)
-    plt.scatter(fix_x, fix_y, c='red', s=10, alpha=0.7)
-    #plt.axis("off")
-    plt.title("Fixations Overlay")
 
-    plt.subplot(1, 4, 4)
-    # Assicurati che il tensore sia su CPU
-    potential_map = potential_map.cpu()
-    # Rimuovi le dimensioni extra (1, 1) se presenti
-    potential_map = potential_map.squeeze()  # Rimuove le dimensioni di valore 1
-    # Se il tensore richiede il gradiente, usa .detach() per separarlo dal grafo computazionale
-    potential_map_detached = potential_map.detach()
-    # 1. Visualizzazione della mappa del potenziale
-    plt.imshow(potential_map_detached.numpy())  # Convertiamo solo per visualizzare
-    plt.colorbar(label="Potential Value")
-    #plt.axis("off")
-    plt.title("Potential Map")
+    # Saliency map generata dai dati di scanpath
+    plt.subplot(1, 3, 3)
+    sal = compute_density_image(mala_trajectory[:, :2], img.shape[:2])
+    res = np.multiply(img, np.repeat(sal[:, :, None] / np.max(sal), 3, axis=2))
+    res = res / np.max(res)
+    plt.imshow(res)
+    plt.axis("off")
+    plt.title("Generated Saliency from Trajectory")
     
     
     plt.show()

@@ -6,7 +6,7 @@ from zs_clip_seg import *
 def main():
 
     # Data path -------------------------------------------------------------------------
-    input_dir = "COCOSearch18-images-TP/images/"
+    input_dir = "data/" #"COCOSearch18-images-TP/images/"
     task = "keyboard"
     output_dir = f"output/images/{task}"
     name = "000000006608.jpg"

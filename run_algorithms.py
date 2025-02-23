@@ -121,11 +121,24 @@ def process_image(input_dir, task, name, use_reshaped_map=True):
             - cov (list): The covariance matrix used for sampling.
             - ratio (np.ndarray): The ratio for resizing the saliency map based on the original image dimensions.
     """
-    
-    # Construct image path
-    img_path = os.path.join(input_dir, task, name)
-    print(f"Processing image: {img_path}")
 
+    # Construct the main image path
+    img_path = os.path.join(input_dir, task, name)
+
+    # Check if the file exists
+    if not os.path.exists(img_path):
+        print(f"File not found at {img_path}, checking alternative location...")
+        
+        # Try looking for it directly in the 'data/' folder
+        alt_path = os.path.join(input_dir, name)
+
+        if os.path.exists(alt_path):
+            print(f"Found image in {alt_path}, using this path instead.")
+            img_path = alt_path
+        else:
+            raise FileNotFoundError(f"Image not found in either {img_path} or {alt_path}")
+
+    print(f"Processing image: {img_path}")
     # Text description for object detection
     text = [task]
     
@@ -180,7 +193,7 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
     # Parameters for gaze trajectory simulation
 
     init_point = np.random.multivariate_normal(mean, cov, 1).astype(int)[0]  # Initial gaze point
-    exp_dur = 2  # Expected duration of the gaze
+    exp_dur = 3 # Expected duration of the gaze
     gaze_sample_rate = 500  # Sample rate for gaze data
     n_steps = int(exp_dur * gaze_sample_rate)  # Number of steps based on duration and sample rate
     step_size = 0.01  # Step size for trajectory simulation
