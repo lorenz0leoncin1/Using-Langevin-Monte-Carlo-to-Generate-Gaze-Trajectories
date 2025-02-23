@@ -12,7 +12,7 @@ def main():
     name = "000000006608.jpg"
 
     # Choose the algorithm --------------------------------------------------------------
-    algorithm = 'ula'   # Type of algorithm to use
+    algorithm = 'mala_cauchy'   # Type of algorithm to use(ula, mala,mala_cauchy)
     n = 10              # Number of scanpaths to simulate
 
     # Model Parameter -------------------------------------------------------------------

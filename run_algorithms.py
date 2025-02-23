@@ -214,7 +214,7 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
         )
         trajectory = ula.simulate_scanpath()
     
-    elif algorithm == 'mala_norm':
+    elif algorithm == 'mala':
         # MALA - Metropolis-Adjusted Langevin Algorithm (Normal distribution)
         mala_norm = MALA(
             potential_map=potential_map, 
@@ -237,7 +237,7 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
             step_size=step_size, 
             burn_in=burn_in, 
             ratio=ratio, 
-            gamma=gamma
+            gamma = torch.tensor(gamma)
         )
         trajectory = mala_cauchy.simulate_scanpath()
 
