@@ -60,7 +60,7 @@ class MALA:
 
         return val.sum()
 
-    def log_Q(self, potential_map, potential, z_prime, z, step_size):
+    def Q_norm(self, potential_map, potential, z_prime, z, step_size):
         """
         Computes the log-ratio of the proposal distribution Q in MALA.
 
@@ -108,8 +108,8 @@ class MALA:
                 proposed_potential = self.potential(self.potential_map, prop_Zi).mean()
 
                 log_ratio = (-proposed_potential + current_potential 
-                             + self.log_Q(self.potential_map, self.potential, Zi, prop_Zi, self.step_size) 
-                             - self.log_Q(self.potential_map, self.potential, prop_Zi, Zi, self.step_size))
+                             + self.Q_norm(self.potential_map, self.potential, Zi, prop_Zi, self.step_size) 
+                             - self.Q_norm(self.potential_map, self.potential, prop_Zi, Zi, self.step_size))
 
                 acceptance_ratio = torch.exp(log_ratio)
 

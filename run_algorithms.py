@@ -193,7 +193,7 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
     # Parameters for gaze trajectory simulation
 
     init_point = np.random.multivariate_normal(mean, cov, 1).astype(int)[0]  # Initial gaze point
-    exp_dur = 3 # Expected duration of the gaze
+    exp_dur = 2 # Expected duration of the gaze
     gaze_sample_rate = 500  # Sample rate for gaze data
     n_steps = int(exp_dur * gaze_sample_rate)  # Number of steps based on duration and sample rate
     step_size = 0.01  # Step size for trajectory simulation

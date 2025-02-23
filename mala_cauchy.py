@@ -61,25 +61,36 @@ class MALA_Cauchy:
 
         return val.sum()
 
-    def log_Q_cauchy(self, z_prime, z):
+    def Q_cauchy(self, z_prime, z):
         """
-        Computes the log-ratio of the proposal distribution Q using a Cauchy distribution.
-
+        Computes the proposal distribution Q(z'|z) for MALA-Cauchy.
+        
         Args:
-            z_prime (Tensor): Proposed sample.
-            z (Tensor): Current sample.
-
+            potential: potential function (U).
+            z_prime: proposed position z'.
+            z: current position z.
+            step_size: step size of the algorithm.
+            gamma: dispersion parameter (step).
+            lambda_scale: scale parameter (lambda) for the Cauchy distribution.
+        
         Returns:
-            Tensor: Log probability ratio of the proposal.
+            Q: value of the proposal distribution Q(z'|z).
         """
+        # Compute the gradient of the potential
         z.requires_grad_()
         grad = torch.autograd.grad(self.potential(z).mean(), z)[0]
-
-        # Compute log-likelihood of the proposal under the Cauchy distribution
-        diff = z_prime - z + self.step_size * grad
-        log_q = -torch.log(torch.pi * self.gamma) - torch.log(1 + (diff / self.gamma) ** 2).sum()
         
-        return log_q
+        # Calculate the distance between z' and z, plus the gradient term
+        diff = z_prime - z + self.step_size * grad
+        
+        # Compute the Euclidean norm (similar to squared distance)
+        diff_squared = torch.mean(diff ** 2, dim=1)
+        
+        # Calculate Q(z'|z) using the Cauchy distribution
+        Q = 1 / (np.pi * self.gamma * (1 + (diff_squared / self.gamma)**2))
+        
+        return Q
+
 
     def simulate_scanpath(self):
         """
@@ -113,11 +124,11 @@ class MALA_Cauchy:
                 
                 # Compute log acceptance ratio
                 log_ratio = (-proposed_potential + current_potential 
-                             + self.log_Q_cauchy(Zi, prop_Zi) 
-                             - self.log_Q_cauchy(prop_Zi, Zi))
+                             + self.Q_cauchy(Zi, prop_Zi) 
+                             - self.Q_cauchy(prop_Zi, Zi))
 
                 acceptance_ratio = torch.exp(log_ratio)
-
+    
                 # Accept or reject the proposed point
                 if torch.rand(1) < acceptance_ratio:
                     Zi = prop_Zi  # Accept the proposal
