@@ -9,10 +9,10 @@ def main():
     input_dir = "data/" #"COCOSearch18-images-TP/images/"
     task = "chair"
     output_dir = f"output/images/{task}"
-    name = "000000044372.jpg"
+    name = "000000006608.jpg"
 
     # Choose the algorithm --------------------------------------------------------------
-    algorithm = 'ula'   # Type of algorithm to use(ula, mala,mala_cauchy)
+    algorithm = 'mala'   # Type of algorithm to use(ula, mala,mala_cauchy)
     n = 5              # Number of scanpaths to simulate
 
     # Model Parameter -------------------------------------------------------------------
