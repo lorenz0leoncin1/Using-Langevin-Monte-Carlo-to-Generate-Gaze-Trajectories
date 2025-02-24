@@ -7,7 +7,7 @@ def main():
 
     # Data path -------------------------------------------------------------------------
     input_dir = "data/" #"COCOSearch18-images-TP/images/"
-    task = "chair"
+    task = "keyboard"
     output_dir = f"output/images/{task}"
     name = "000000006608.jpg"
 
