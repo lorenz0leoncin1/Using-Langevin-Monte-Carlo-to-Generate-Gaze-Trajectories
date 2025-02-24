@@ -254,6 +254,6 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
     fixations = process_fixations(trajectory, gaze_sample_rate, screen_params)
 
     # Save and visualize the results (trajectory, fixations, saliency map, etc.)
-    save_and_plot_everything(img, img_path, output_dir, potential_map, reshaped_saliency, trajectory, fixations)
+    #save_and_plot_everything(img, img_path, output_dir, potential_map, reshaped_saliency, trajectory, fixations)
 
     return fixations, img
