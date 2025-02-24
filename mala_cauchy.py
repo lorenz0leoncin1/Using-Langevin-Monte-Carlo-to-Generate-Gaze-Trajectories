@@ -111,7 +111,7 @@ class MALA_Cauchy:
                 grad = torch.autograd.grad(u, Zi)[0]
 
                 # Propose a new point using Langevin dynamics with Cauchy noise
-                noise = self.gamma * torch.tan(torch.pi * (torch.rand(1, 2) - 0.5))  # Sample from standard Cauchy
+                noise = torch.distributions.Cauchy(0, self.gamma).sample((1, 2))# Sample from standard Cauchy
                 prop_Zi = Zi.detach() - self.step_size * grad + noise
 
                 # Clip proposed point to map boundaries
