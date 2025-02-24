@@ -93,6 +93,7 @@ def analyze_saliency_continuity(saliency_map):
     plt.imshow(saliency_map)
     plt.colorbar(label="Saliency Value")
     plt.title("Saliency Map")
+    plt.axis("off")
     plt.show()
 
 

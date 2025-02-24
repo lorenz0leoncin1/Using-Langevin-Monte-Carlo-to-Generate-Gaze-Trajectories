@@ -7,12 +7,12 @@ def main():
 
     # Data path -------------------------------------------------------------------------
     input_dir = "data/" #"COCOSearch18-images-TP/images/"
-    task = "keyboard"
+    task = "chair"
     output_dir = f"output/images/{task}"
-    name = "000000006608.jpg"
+    name = "000000044372.jpg"
 
     # Choose the algorithm --------------------------------------------------------------
-    algorithm = 'mala'   # Type of algorithm to use(ula, mala,mala_cauchy)
+    algorithm = 'ula'   # Type of algorithm to use(ula, mala,mala_cauchy)
     n = 5              # Number of scanpaths to simulate
 
     # Model Parameter -------------------------------------------------------------------
@@ -21,9 +21,9 @@ def main():
     # Type of execution
 
     # Type 1: run a choosen algorithm on a given image ----------------------------------
-    #fixations, img = run_algorithm(input_dir, output_dir, task, name, algorithm, gamma)
+    fixations, img = run_algorithm(input_dir, output_dir, task, name, algorithm, gamma)
     
     # Type 2: Simulate N scanpaths, run a choosen algorithm and recieve all the stats of the performances with MM and SM 
     # Pipeline for evaluating all the images in split1 validation set
-    evaluation_pipeline_N(n, algorithm, gamma)
+    #evaluation_pipeline_N(n, algorithm, gamma)
 main()

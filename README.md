@@ -1,6 +1,8 @@
 # Using Langevin Monte Carlo to Generate Gaze Trajectories (Simulation and Evaluation)
 
-This project allows simulating gaze trajectories using algorithms like ULA and MALA, and evaluating the performance using trajectory comparison methods such as ScanMatch (SM) and MultiMatch (MM). It can be used to generate and evaluate simulated gaze on an image dataset.
+This is a unified project for the courses **Affective Computing** and **Natural Interaction** at [**PhuseLab**](https://phuselab.di.unimi.it/), University of Milan, A.Y. 2024/2025, M.Sc. in Computer Science.
+
+It allows sthe simulation of gaze trajectories using algorithms like ULA and MALA, and evaluating the performance using trajectory comparison methods such as ScanMatch (SM) and MultiMatch (MM). It can be used to generate and evaluate simulated gaze on an image dataset.
 
 An example output is shown below on an arbitrary image. The prompt used is: "keyboard".
 

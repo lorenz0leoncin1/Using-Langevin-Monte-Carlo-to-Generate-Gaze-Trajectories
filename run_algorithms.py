@@ -9,7 +9,7 @@ import torchvision.transforms as T
 from classify_gaze_IVT import classify_raw_IVT
 from mala import MALA
 from mala_cauchy import MALA_Cauchy
-from plotting import save_and_plot_everything
+from plotting import *
 from saliency_to_potential import saliency_to_potential_EM
 from ula import ULA
 from zs_clip_seg import get_obj_map
@@ -150,6 +150,8 @@ def process_image(input_dir, task, name, use_reshaped_map=True):
     obj_map = torch.tensor(obj_map[None, None, :, :])  # Convert to tensor
     saliency_map = obj_map
 
+    #analyze_saliency_continuity(saliency_map)
+
     # Resize the saliency map if needed
     reshaped_saliency = T.Resize(size=13)(saliency_map)
 
@@ -254,6 +256,6 @@ def run_algorithm(input_dir, output_dir, task, name, algorithm, gamma):
     fixations = process_fixations(trajectory, gaze_sample_rate, screen_params)
 
     # Save and visualize the results (trajectory, fixations, saliency map, etc.)
-    #save_and_plot_everything(img, img_path, output_dir, potential_map, reshaped_saliency, trajectory, fixations)
+    save_and_plot_everything(img, img_path, output_dir, potential_map, reshaped_saliency, trajectory, fixations)
 
     return fixations, img
