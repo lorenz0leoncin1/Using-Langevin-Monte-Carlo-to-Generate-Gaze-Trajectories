@@ -13,7 +13,7 @@ def main():
 
     # Choose the algorithm --------------------------------------------------------------
     algorithm = 'mala'   # Type of algorithm to use(ula, mala,mala_cauchy)
-    n = 5              # Number of scanpaths to simulate
+    n = 10              # Number of scanpaths to simulate
 
     # Model Parameter -------------------------------------------------------------------
     gamma = 0.1  # This is used only in the MALA-Cauchy
